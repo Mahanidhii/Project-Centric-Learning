@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Webcam Stream</title>
+</head>
+<body>
+    <h1>Live YOLO Object Detection</h1>
+    <img id="video-stream" src="" alt="Webcam Stream" width="640" height="480">
+    
+    <script>
+        function startStream() {
+            const img = document.getElementById("video-stream");
+            setInterval(() => {
+                img.src = "/video_feed?rand=" + Math.random(); // Fetch YOLO processed frame
+            }, 100);
+        }
+        window.onload = startStream;
+    </script>
+</body>
+</html>
+
+
