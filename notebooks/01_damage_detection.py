@@ -1,8 +1,3 @@
-"""
-Vehicle Damage Detection - Model Training
-Uses Transfer Learning with MobileNetV2
-"""
-
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,7 +17,7 @@ EPOCHS = 20
 
 # Data Loading & Augmentation
 print("=" * 50)
-print("STEP 1: Loading and Augmenting Data")
+print("Loading and Augmenting Data")
 print("=" * 50)
 
 train_datagen = ImageDataGenerator(
@@ -83,7 +78,7 @@ print(f"Validation samples: {val_generator.samples}")
 
 # Model Architecture
 print("\n" + "=" * 50)
-print("STEP 2: Building Model (MobileNetV2 + Custom Head)")
+print("Building Model (MobileNetV2 + Custom Head)")
 print("=" * 50)
 
 base_model = MobileNetV2(
@@ -132,7 +127,7 @@ history = model.fit(
 
 # Fine-tuning (Unfreeze last 30 layers)
 print("\n" + "=" * 50)
-print("STEP 4: Fine-tuning (unfreezing last 30 layers)")
+print("Fine-tuning (unfreezing last 30 layers)")
 print("=" * 50)
 
 base_model.trainable = True
