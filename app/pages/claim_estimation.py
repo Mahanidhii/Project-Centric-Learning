@@ -1,8 +1,7 @@
 """
-Page 2: Insurance Claim Estimation
+Page 2: Insurance Claim Estimator
 Takes damage severity + vehicle details → estimates claim range
 """
-
 import streamlit as st
 import numpy as np
 import json
@@ -12,7 +11,7 @@ import pandas as pd
 from datetime import datetime
 
 st.set_page_config(page_title="Claim Estimation", page_icon="💰", layout="wide")
-st.markdown("## 💰 Insurance Claim Estimation")
+st.markdown("## Insurance Claim Estimation")
 st.markdown("Enter vehicle details to get an AI-powered claim estimate.")
 st.divider()
 
@@ -45,7 +44,7 @@ damage_confidence = st.session_state.get("damage_confidence", None)
 
 if damage_severity and damage_severity != "None":
     st.success(
-        f"📸 **Damage Analysis Imported:** Severity = **{damage_severity}** "
+        f" **Damage Analysis Imported:** Severity = **{damage_severity}** "
         f"(Confidence: {damage_confidence:.1f}%)"
     )
 else:
@@ -110,7 +109,7 @@ with col2:
 
 st.divider()
 
-# Claim Estimate
+# Claim Estimator
 if st.button("🔍 Estimate Claim Amount", type="primary", use_container_width=True):
 
     with st.spinner("Calculating estimate..."):
