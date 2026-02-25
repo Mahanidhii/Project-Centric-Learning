@@ -15,9 +15,9 @@ MODEL_SAVE_PATH = os.path.join("..", "models", "claim_model.pkl")
 ENCODERS_SAVE_PATH = os.path.join("..", "models", "label_encoders.pkl")
 FEATURES_SAVE_PATH = os.path.join("..", "models", "model_features.json")
 
-# LOADING AND EXPLORE DATA
+# LOADING AND EXPLORING DATA
 print("=" * 50)
-print("STEP 1: Loading Data")
+print("Loading Data...")
 print("=" * 50)
 
 df = pd.read_csv(DATA_PATH)
@@ -32,7 +32,7 @@ print(f"\nBasic stats:\n{df.describe()}")
 
 # FEATURE SELECTION & CLEANING
 print("\n" + "=" * 50)
-print("STEP 2: Feature Selection & Cleaning")
+print("Feature Selection & Cleaning")
 print("=" * 50)
 
 # Select only the features relevant to claim estimation
@@ -101,7 +101,7 @@ for col in categorical_cols:
 
 # TRAIN/TEST SPLIT
 print("\n" + "=" * 50)
-print("STEP 4: Splitting Data")
+print("Splitting Data")
 print("=" * 50)
 
 X = df_work[feature_cols]
@@ -121,7 +121,7 @@ print(f"  Max:  ${y.max():,.2f}")
 
 # Train multiple models and compare them
 print("\n" + "=" * 50)
-print("STEP 5: Training Models")
+print("Training Model")
 print("=" * 50)
 
 models = {
@@ -151,13 +151,13 @@ for name, model in models.items():
 
 # Select best mode3l and save
 print("\n" + "=" * 50)
-print("STEP 6: Selecting Best Model")
+print("Selecting Best Model")
 print("=" * 50)
 
 best_name = max(results, key=lambda k: results[k]["r2"])
 best_model = results[best_name]["model"]
 
-print(f"\n🏆 Best Model: {best_name}")
+print(f"\n Best Model: {best_name}")
 print(f"   R² Score: {results[best_name]['r2']:.4f}")
 print(f"   MAE:      ${results[best_name]['mae']:,.2f}")
 
@@ -185,7 +185,7 @@ print(f"Feature metadata saved to: {FEATURES_SAVE_PATH}")
 
 # Feature importance plot
 print("\n" + "=" * 50)
-print("STEP 7: Feature Importance")
+print("Feature Importance")
 print("=" * 50)
 
 importances = best_model.feature_importances_
