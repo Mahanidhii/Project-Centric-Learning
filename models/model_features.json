@@ -1,0 +1,21 @@
+{
+  "feature_columns": [
+    "auto_make",
+    "auto_model",
+    "auto_year",
+    "incident_severity",
+    "incident_type",
+    "collision_type"
+  ],
+  "target_column": "vehicle_claim",
+  "categorical_columns": [
+    "auto_make",
+    "auto_model",
+    "incident_severity",
+    "incident_type",
+    "collision_type"
+  ],
+  "best_model_name": "Random Forest",
+  "r2_score": 0.6358411534304821,
+  "mae": 8310.028529855463
+}
