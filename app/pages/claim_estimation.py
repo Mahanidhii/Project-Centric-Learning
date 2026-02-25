@@ -110,7 +110,7 @@ with col2:
 st.divider()
 
 # Claim Estimator
-if st.button("🔍 Estimate Claim Amount", type="primary", use_container_width=True):
+if st.button("Estimate Claim Amount", type="primary", use_container_width=True):
 
     with st.spinner("Calculating estimate..."):
 
