@@ -22,14 +22,16 @@ def load_damage_model():
     """Load the trained damage detection model."""
     from tensorflow.keras.models import load_model
 
-    model_path = os.path.join("models", "damage_model.h5")
+    # Resolve paths relative to the project root (app/pages/ -> app/ -> project root)
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    model_path = os.path.join(base_dir, "models", "damage_model.h5")
 
     if not os.path.exists(model_path):
         return None, None
 
     model = load_model(model_path)
 
-    classes_path = os.path.join("models", "damage_classes.json")
+    classes_path = os.path.join(base_dir, "models", "damage_classes.json")
     if os.path.exists(classes_path):
         with open(classes_path, "r") as f:
             class_names = json.load(f)
@@ -122,7 +124,7 @@ if uploaded_file is not None:
                 st.divider()
                 st.markdown("**Prediction Probabilities:**")
                 for i, class_name in enumerate(class_names):
-                    prob = prediction[0][i] * 100
+                    prob = float(prediction[0][i] * 100)
                     st.progress(prob / 100, text=f"{class_name}: {prob:.1f}%")
 
     # Navigation
