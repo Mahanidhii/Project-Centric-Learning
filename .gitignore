@@ -1,3 +1,6 @@
 *.venv
 *.pkl
 *.h5 
+*data
+*.json
+*__pycache__
